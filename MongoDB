@@ -1,0 +1,52 @@
+MongoDB : CRUD Operations
+
+
+Document --> {}
+Collection of Documents --> [{},{},{},{},{}] ==> Array of Documents
+
+help : Shows Commands related to MongoDB
+show dbs : Shows Available Databases
+db : Current Database
+use x : Create DB named 'x'
+show collections : Shows Collections of Current Database
+
+Create Operation :
+
+db.collection.insertOne()
+db.y.insertOne({id : 1,name : "A"}) : Inserts only one Document in a Collection of DB , y --> Collections
+
+db.collection.inserMany()
+db.y.insertMany([
+             { id : 2,name : "B" },
+             { id : 3,name : "C"}
+            ]); Inserts many Documents in a  Collection of DB
+
+Read Operation :
+
+db.collection.find()
+db.y.find() : Shows all Documents in a Collection
+db.y.find({price : {$gt : 1.25},   --> Query Criteria
+               {id : 1,name : 1}}).limit(2)   --> Projection
+
+
+Upadate Operation :
+
+db.collection.updateOne() 
+db.y.updateOne({id : 1},{$set : {index : 1}})
+
+db.collection.updateMany() 
+db.y.updateMany({id : {$lt : 5}},{$set : {Index : 5}})
+
+db.collection.replaceOne() 
+db.y.replaceOne({name : "A"}, --> Filter
+                           {id : 1,name : "Z"}) -->Replacement
+
+
+
+Delete Operation:
+
+db.collection.deleteOne() 
+db.y.deleteOne({id : 1})
+
+db.collection.deleteMany()
+db.y.deleteOne({id : {$lt : 5}})
